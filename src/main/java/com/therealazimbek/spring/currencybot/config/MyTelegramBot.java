@@ -1,21 +1,35 @@
 package com.therealazimbek.spring.currencybot.config;
 
+import com.google.auth.oauth2.GoogleCredentials;
+import com.google.cloud.speech.v1.*;
+import com.google.protobuf.ByteString;
 import com.pengrad.telegrambot.TelegramBot;
+import com.pengrad.telegrambot.model.File;
+import com.pengrad.telegrambot.model.Message;
 import com.pengrad.telegrambot.model.Update;
 import com.pengrad.telegrambot.model.request.ParseMode;
 import com.pengrad.telegrambot.request.DeleteMessage;
+import com.pengrad.telegrambot.request.GetFile;
 import com.pengrad.telegrambot.request.GetUpdates;
 import com.pengrad.telegrambot.request.SendMessage;
 import com.pengrad.telegrambot.response.BaseResponse;
+import com.pengrad.telegrambot.response.GetFileResponse;
 import com.pengrad.telegrambot.response.GetUpdatesResponse;
 import com.pengrad.telegrambot.response.SendResponse;
 import com.therealazimbek.spring.currencybot.model.TelegramUpdate;
+import com.therealazimbek.spring.currencybot.service.SpeechToTextService;
 import com.therealazimbek.spring.currencybot.service.TelegramUpdateService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
+import org.apache.commons.io.FileUtils;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.List;
 
 @Component
@@ -24,11 +38,14 @@ public class MyTelegramBot {
     private final TelegramBot telegramBot;
     private final String botToken;
 
+    private final SpeechToTextService speechToTextService;
+
     private final TelegramUpdateService telegramUpdateService;
 
-    public MyTelegramBot(@Value("${telegram.bot.token}") String botToken, TelegramUpdateService telegramUpdateService) {
+    public MyTelegramBot(@Value("${telegram.bot.token}") String botToken, SpeechToTextService speechToTextService, TelegramUpdateService telegramUpdateService) {
         this.botToken = botToken;
         this.telegramBot = new TelegramBot(botToken);
+        this.speechToTextService = speechToTextService;
         this.telegramUpdateService = telegramUpdateService;
     }
 
@@ -40,7 +57,14 @@ public class MyTelegramBot {
 
     public void handleUpdates(Update[] updates) {
         for (Update update : updates) {
-            onUpdateReceived(update);
+            if (update.message() != null) {
+                Message message = update.message();
+                if (message.voice() != null) {
+                    onVoiceMessageReceived(message);
+                } else {
+                    onUpdateReceived(update);
+                }
+            }
         }
     }
 
@@ -91,6 +115,64 @@ public class MyTelegramBot {
                 sendMessageToChat(String.valueOf(update.message().chat().id()), "I don't understand you :( Example: 100$, 100T, rates, info, history, clear(only user messages)");
             }
         }
+    }
+
+    private void onVoiceMessageReceived(Message message) {
+        // Extract relevant information from the voice message
+        Long chatId = message.chat().id();
+        String fileId = message.voice().fileId();
+
+        // Download the voice message file from Telegram
+        byte[] voiceData = downloadVoiceFile(fileId, Path.of("voice.ogg"));
+
+        if (voiceData != null) {
+            try {
+                // Perform speech-to-text conversion
+                String transcription = convertVoiceToText(voiceData);
+
+                // Perform any necessary processing or actions based on the transcribed text
+                // Here, we simply reply to the voice message with the transcribed text
+                sendMessageToChat(chatId.toString(), "Transcription: " + transcription);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        } else {
+            System.err.println("Failed to download voice file from Telegram.");
+        }
+    }
+
+    private byte[] downloadVoiceFile(String fileId, Path destinationPath) {
+
+        GetFile getFileRequest = new GetFile(fileId);
+        GetFileResponse getFileResponse = telegramBot.execute(getFileRequest);
+
+        if (getFileResponse.isOk()) {
+            File file = getFileResponse.file();
+
+            String fileUrl = file.filePath();
+
+            String fullPath = "https://api.telegram.org/file/bot" + botToken + "/" + fileUrl;
+
+            try {
+                FileUtils.copyURLToFile(new URL(fullPath), destinationPath.toFile());
+                return Files.readAllBytes(Paths.get(destinationPath.toUri()));
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        } else {
+            try {
+                throw new IOException("Failed to download voice file from Telegram: " + getFileResponse.description());
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }
+
+        // return downloaded voice file data as byte array
+    }
+
+    private String convertVoiceToText(byte[] voiceData) throws IOException {
+        // Create a SpeechClient using Google Cloud credentials
+        return speechToTextService.transcribeAudio(voiceData);
     }
 
     public GetUpdatesResponse execute(GetUpdates timeout) {
