@@ -592,3 +592,84 @@ Caused by: javax.sound.sampled.UnsupportedAudioFileException: File of unsupporte
 2023-05-20T18:56:33.973+06:00  INFO 37625 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
 2023-05-20T18:56:33.974+06:00  INFO 37625 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
 2023-05-20T18:56:33.977+06:00  INFO 37625 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-20T18:59:30.432+06:00  INFO 38352 --- [main] c.t.s.c.CurrencyBotApplicationTests      : Starting CurrencyBotApplicationTests using Java 17.0.7 with PID 38352 (started by therealazimbek in /home/therealazimbek/IdeaProjects/currency-bot)
+2023-05-20T18:59:30.433+06:00  INFO 38352 --- [main] c.t.s.c.CurrencyBotApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2023-05-20T18:59:30.450+06:00 DEBUG 38352 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@2d8f2f3a
+2023-05-20T18:59:30.775+06:00  INFO 38352 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-20T18:59:30.807+06:00  INFO 38352 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 27 ms. Found 1 JPA repository interfaces.
+2023-05-20T18:59:31.071+06:00  INFO 38352 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-20T18:59:31.099+06:00  INFO 38352 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-05-20T18:59:31.101+06:00  INFO 38352 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-05-20T18:59:31.191+06:00  INFO 38352 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-05-20T18:59:31.261+06:00  INFO 38352 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-05-20T18:59:31.270+06:00  INFO 38352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-20T18:59:31.399+06:00  INFO 38352 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@448ade1
+2023-05-20T18:59:31.401+06:00  INFO 38352 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-20T18:59:31.418+06:00  INFO 38352 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.PostgreSQLDialect, version: org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$DialectResolutionInfoImpl@4bce62b
+2023-05-20T18:59:31.522+06:00  INFO 38352 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-05-20T18:59:31.871+06:00  INFO 38352 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-20T18:59:31.899+06:00  INFO 38352 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-20T18:59:32.321+06:00  WARN 38352 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-20T18:59:32.415+06:00 DEBUG 38352 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-05-20T18:59:32.478+06:00 DEBUG 38352 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 mappings in 'requestMappingHandlerMapping'
+2023-05-20T18:59:32.492+06:00 DEBUG 38352 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2023-05-20T18:59:32.500+06:00 DEBUG 38352 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-05-20T18:59:32.565+06:00  INFO 38352 --- [main] c.t.s.c.CurrencyBotApplicationTests      : Started CurrencyBotApplicationTests in 2.344 seconds (process running for 2.891)
+2023-05-20T19:34:06.488+06:00 DEBUG 38352 --- [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@2d8f2f3a, started on Sat May 20 18:59:30 ALMT 2023
+2023-05-20T19:34:06.490+06:00  INFO 38352 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-20T19:34:06.491+06:00  INFO 38352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-20T19:34:06.494+06:00  INFO 38352 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-20T19:34:30.464+06:00  INFO 40600 --- [main] c.t.s.c.CurrencyBotApplicationTests      : Starting CurrencyBotApplicationTests using Java 17.0.7 with PID 40600 (started by therealazimbek in /home/therealazimbek/IdeaProjects/currency-bot)
+2023-05-20T19:34:30.465+06:00  INFO 40600 --- [main] c.t.s.c.CurrencyBotApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2023-05-20T19:34:30.483+06:00 DEBUG 40600 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@2d8f2f3a
+2023-05-20T19:34:30.808+06:00  INFO 40600 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-20T19:34:30.838+06:00  INFO 40600 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 1 JPA repository interfaces.
+2023-05-20T19:34:31.109+06:00  INFO 40600 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-20T19:34:31.137+06:00  INFO 40600 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-05-20T19:34:31.139+06:00  INFO 40600 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-05-20T19:34:31.220+06:00  INFO 40600 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-05-20T19:34:31.294+06:00  INFO 40600 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-05-20T19:34:31.303+06:00  INFO 40600 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-20T19:34:31.439+06:00  INFO 40600 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@448ade1
+2023-05-20T19:34:31.440+06:00  INFO 40600 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-20T19:34:31.457+06:00  INFO 40600 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.PostgreSQLDialect, version: org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$DialectResolutionInfoImpl@4bce62b
+2023-05-20T19:34:31.561+06:00  INFO 40600 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-05-20T19:34:31.907+06:00  INFO 40600 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-20T19:34:31.935+06:00  INFO 40600 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-20T19:34:32.343+06:00  WARN 40600 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-20T19:34:32.453+06:00 DEBUG 40600 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-05-20T19:34:32.507+06:00 DEBUG 40600 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 mappings in 'requestMappingHandlerMapping'
+2023-05-20T19:34:32.521+06:00 DEBUG 40600 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2023-05-20T19:34:32.528+06:00 DEBUG 40600 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-05-20T19:34:32.590+06:00  INFO 40600 --- [main] c.t.s.c.CurrencyBotApplicationTests      : Started CurrencyBotApplicationTests in 2.339 seconds (process running for 2.895)
+2023-05-20T19:46:15.909+06:00 DEBUG 40600 --- [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@2d8f2f3a, started on Sat May 20 19:34:30 ALMT 2023
+2023-05-20T19:46:15.911+06:00  INFO 40600 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-20T19:46:15.913+06:00  INFO 40600 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-20T19:46:15.915+06:00  INFO 40600 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2023-05-20T19:46:31.733+06:00  INFO 42030 --- [main] c.t.s.c.CurrencyBotApplicationTests      : Starting CurrencyBotApplicationTests using Java 17.0.7 with PID 42030 (started by therealazimbek in /home/therealazimbek/IdeaProjects/currency-bot)
+2023-05-20T19:46:31.734+06:00  INFO 42030 --- [main] c.t.s.c.CurrencyBotApplicationTests      : No active profile set, falling back to 1 default profile: "default"
+2023-05-20T19:46:31.751+06:00 DEBUG 42030 --- [main] o.s.w.c.s.GenericWebApplicationContext   : Refreshing org.springframework.web.context.support.GenericWebApplicationContext@5fe8b721
+2023-05-20T19:46:32.082+06:00  INFO 42030 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2023-05-20T19:46:32.112+06:00  INFO 42030 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 25 ms. Found 1 JPA repository interfaces.
+2023-05-20T19:46:32.441+06:00  INFO 42030 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2023-05-20T19:46:32.479+06:00  INFO 42030 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 6.2.2.Final
+2023-05-20T19:46:32.481+06:00  INFO 42030 --- [main] org.hibernate.cfg.Environment            : HHH000406: Using bytecode reflection optimizer
+2023-05-20T19:46:32.564+06:00  INFO 42030 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-05-20T19:46:32.643+06:00  INFO 42030 --- [main] o.s.o.j.p.SpringPersistenceUnitInfo      : No LoadTimeWeaver setup: ignoring JPA class transformer
+2023-05-20T19:46:32.657+06:00  INFO 42030 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2023-05-20T19:46:32.788+06:00  INFO 42030 --- [main] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Added connection org.postgresql.jdbc.PgConnection@2c8b8de0
+2023-05-20T19:46:32.789+06:00  INFO 42030 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2023-05-20T19:46:32.810+06:00  INFO 42030 --- [main] org.hibernate.orm.dialect                : HHH035001: Using dialect: org.hibernate.dialect.PostgreSQLDialect, version: org.hibernate.engine.jdbc.env.internal.JdbcEnvironmentInitiator$DialectResolutionInfoImpl@23121d14
+2023-05-20T19:46:32.922+06:00  INFO 42030 --- [main] o.h.b.i.BytecodeProviderInitiator        : HHH000021: Bytecode provider name : bytebuddy
+2023-05-20T19:46:33.258+06:00  INFO 42030 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2023-05-20T19:46:33.290+06:00  INFO 42030 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2023-05-20T19:46:33.690+06:00  WARN 42030 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2023-05-20T19:46:33.783+06:00 DEBUG 42030 --- [main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2023-05-20T19:46:33.833+06:00 DEBUG 42030 --- [main] s.w.s.m.m.a.RequestMappingHandlerMapping : 2 mappings in 'requestMappingHandlerMapping'
+2023-05-20T19:46:33.847+06:00 DEBUG 42030 --- [main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2023-05-20T19:46:33.854+06:00 DEBUG 42030 --- [main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2023-05-20T19:46:33.945+06:00  INFO 42030 --- [main] c.t.s.c.CurrencyBotApplicationTests      : Started CurrencyBotApplicationTests in 2.433 seconds (process running for 3.022)
+2023-05-20T19:46:43.894+06:00 DEBUG 42030 --- [SpringApplicationShutdownHook] o.s.w.c.s.GenericWebApplicationContext   : Closing org.springframework.web.context.support.GenericWebApplicationContext@5fe8b721, started on Sat May 20 19:46:31 ALMT 2023
+2023-05-20T19:46:43.897+06:00  INFO 42030 --- [SpringApplicationShutdownHook] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2023-05-20T19:46:43.899+06:00  INFO 42030 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2023-05-20T19:46:43.902+06:00  INFO 42030 --- [SpringApplicationShutdownHook] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
