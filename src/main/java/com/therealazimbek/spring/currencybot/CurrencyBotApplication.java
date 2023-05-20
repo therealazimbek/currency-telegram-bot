@@ -25,9 +25,6 @@ public class CurrencyBotApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        // Replace with your chat ID
-        String chatId = "735365473";
-        String message = "Hello from your Telegram bot!";
         while (true) {
             GetUpdatesResponse updatesResponse = telegramBot.execute(new GetUpdates().limit(100).offset(0).timeout(0));
             Update[] updates = updatesResponse.updates().toArray(new Update[0]);

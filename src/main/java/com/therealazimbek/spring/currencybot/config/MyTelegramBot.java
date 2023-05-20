@@ -1,8 +1,5 @@
 package com.therealazimbek.spring.currencybot.config;
 
-import com.google.auth.oauth2.GoogleCredentials;
-import com.google.cloud.speech.v1.*;
-import com.google.protobuf.ByteString;
 import com.pengrad.telegrambot.TelegramBot;
 import com.pengrad.telegrambot.model.File;
 import com.pengrad.telegrambot.model.Message;
@@ -19,9 +16,9 @@ import com.pengrad.telegrambot.response.SendResponse;
 import com.therealazimbek.spring.currencybot.model.TelegramUpdate;
 import com.therealazimbek.spring.currencybot.service.SpeechToTextService;
 import com.therealazimbek.spring.currencybot.service.TelegramUpdateService;
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
-import org.apache.commons.io.FileUtils;
 
 import java.io.IOException;
 import java.math.BigDecimal;
@@ -118,26 +115,16 @@ public class MyTelegramBot {
     }
 
     private void onVoiceMessageReceived(Message message) {
-        // Extract relevant information from the voice message
         Long chatId = message.chat().id();
         String fileId = message.voice().fileId();
 
-        // Download the voice message file from Telegram
         byte[] voiceData = downloadVoiceFile(fileId, Path.of("voice.ogg"));
 
-        if (voiceData != null) {
-            try {
-                // Perform speech-to-text conversion
-                String transcription = convertVoiceToText(voiceData);
-
-                // Perform any necessary processing or actions based on the transcribed text
-                // Here, we simply reply to the voice message with the transcribed text
-                sendMessageToChat(chatId.toString(), "Transcription: " + transcription);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        } else {
-            System.err.println("Failed to download voice file from Telegram.");
+        try {
+            String transcription = convertVoiceToText(voiceData);
+            sendMessageToChat(chatId.toString(), "Transcription: " + transcription);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
@@ -166,13 +153,10 @@ public class MyTelegramBot {
                 throw new RuntimeException(e);
             }
         }
-
-        // return downloaded voice file data as byte array
     }
 
     private String convertVoiceToText(byte[] voiceData) throws IOException {
-        // Create a SpeechClient using Google Cloud credentials
-        return speechToTextService.transcribeAudio(voiceData);
+        return speechToTextService.transcribeSpeech(voiceData);
     }
 
     public GetUpdatesResponse execute(GetUpdates timeout) {
