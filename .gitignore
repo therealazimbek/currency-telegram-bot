@@ -34,3 +34,5 @@ build/
 
 src/main/resources/keyfile.json
 src/main/resources/application.yml
+
+logs/

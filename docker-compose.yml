@@ -11,19 +11,19 @@ services:
     environment:
       POSTGRES_DB: northwind
       POSTGRES_PASSWORD: northwind
-  currency-bot:
-    container_name: currency-bot
-    image: currency-bot:latest
-
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - "8080:8080"
-    depends_on:
-      - dbpostgresql
-    environment:
-      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql:5432/northwind
-      - SPRING_DATASOURCE_USERNAME=postgres
-      - SPRING_DATASOURCE_PASSWORD=northwind
-      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
+#  currency-bot:
+#    container_name: currency-bot
+#    image: currency-bot:latest
+#
+#    build:
+#      context: .
+#      dockerfile: Dockerfile
+#    ports:
+#      - "8080:8080"
+#    depends_on:
+#      - dbpostgresql
+#    environment:
+#      - SPRING_DATASOURCE_URL=jdbc:postgresql://dbpostgresql:5432/northwind
+#      - SPRING_DATASOURCE_USERNAME=postgres
+#      - SPRING_DATASOURCE_PASSWORD=northwind
+#      - SPRING_JPA_HIBERNATE_DDL_AUTO=update
