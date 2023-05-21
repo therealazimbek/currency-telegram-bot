@@ -10,6 +10,7 @@ import com.pengrad.telegrambot.response.BaseResponse;
 import com.pengrad.telegrambot.response.GetUpdatesResponse;
 import com.pengrad.telegrambot.response.SendResponse;
 import com.therealazimbek.spring.currencybot.model.TelegramUpdate;
+import com.therealazimbek.spring.currencybot.service.CurrentRateFromApi;
 import com.therealazimbek.spring.currencybot.service.TelegramUpdateService;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -23,15 +24,15 @@ public class MyTelegramBot {
 
     private final TelegramBot telegramBot;
 
-    private final String botToken;
-
     private final TelegramUpdateService telegramUpdateService;
+
+    private final double currentRate;
 
 
     public MyTelegramBot(@Value("${telegram.bot.token}") String botToken, TelegramUpdateService telegramUpdateService) {
-        this.botToken = botToken;
         this.telegramBot = new TelegramBot(botToken);
         this.telegramUpdateService = telegramUpdateService;
+        this.currentRate = CurrentRateFromApi.getCurrentRate();
     }
 
     public void sendMessageToChat(String chatId, String message) {
@@ -64,12 +65,12 @@ public class MyTelegramBot {
             } else if (text.matches("\\d+(?:\\.\\d+)?\\$")) {
                 String[] parts = text.split("\\$");
                 double amount = Double.parseDouble(parts[0]);
-                double convertedAmount = new BigDecimal(amount * 448.40).setScale(3, RoundingMode.HALF_UP).doubleValue();
+                double convertedAmount = new BigDecimal(amount * currentRate).setScale(3, RoundingMode.HALF_UP).doubleValue();
                 sendMessageToChat(String.valueOf(update.message().chat().id()), "Converted amount: " + convertedAmount + " KZT");
             } else if (text.matches("\\d+(?:\\.\\d+)?T$")) {
                 String[] parts = text.split("T");
                 double amount = Double.parseDouble(parts[0]);
-                double convertedAmount = new BigDecimal(amount / 448.40).setScale(3, RoundingMode.HALF_UP).doubleValue();
+                double convertedAmount = new BigDecimal(amount / currentRate).setScale(3, RoundingMode.HALF_UP).doubleValue();
                 sendMessageToChat(String.valueOf(update.message().chat().id()), "Converted amount: " + convertedAmount + " USD");
             } else if (text.equals("/rates")) {
                 sendMessageToChat(String.valueOf(update.message().chat().id()), "1 KZT = 0.0022 USD\n1 USD = 448.40 KZT");
