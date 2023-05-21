@@ -5,9 +5,9 @@ Simple Telegram Bot that converts USD to KZT and vice versa.
 1. ex: 100$ 
 2. ex: 100T, 
 3. /start - hello message
-4. /rates - pring current rate, 
+4. /rates - print current rate, 
 5. /info - quick description, 
-6. /history - user requests histrory, 
+6. /history - user requests history, 
 7. /clear - only user messages
 
 ### Stack
