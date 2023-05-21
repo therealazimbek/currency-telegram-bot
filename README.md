@@ -1,5 +1,5 @@
 # CurrencyHelper Telegram bot
-Simpe Telegram Bot that converts USD to KZT and vice versa. 
+Simple Telegram Bot that converts USD to KZT and vice versa. 
 
 ### Commands: 
 1. ex: 100$ 
